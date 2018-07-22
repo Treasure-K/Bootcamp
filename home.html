@@ -4,19 +4,45 @@
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body background="images/DiaryBG.jpg">
-	<div align="right">
-		<a href="log_in.html" class="my_text"></a><br>
+<body class="user-bg">
+	<div class="nav">
+		<div class="nav-left">
+			<a href="index.html">My Diary</a>
+		</div>
+		<div class="nav-right">
+			<a href="home.html" class="active">Home</a>
+			<a href="sign_up.html">Log out</a>
+		</div>	
 	</div>
-	<div align="right">
-		<a href="log_in.html" class="my_text">Logout</a><br>
-	</div>
-	<br>
-	<div align="center">
-		<iframe width="1200" height="550" src="entry_frame.html"></iframe>
-	</div>
-	<div align="center">
-		<button type="button" onclick="">Create New Entry</button>
+
+	<div class="content center">
+		<div class="content-header">
+			<h2>Entries</h2>
+		</div>
+		<div class="content-body">
+			<div class="entries">
+				<ol>
+					<li class="entry-list">
+						<p class="entry-title"><a href="entry.html">Lorem ipsum dolor sit amet</a></p>
+						<span class="entry-date">01-01-2018</span>
+					</li>
+					<li class="entry-list">
+						<p class="entry-title"><a href="entry.html">Lorem ipsum dolor sit amet</a></p>
+						<span class="entry-date">01-01-2018</span>
+					</li>
+					<li class="entry-list">
+						<p class="entry-title"><a href="entry.html">Lorem ipsum dolor sit amet</a></p>
+						<span class="entry-date">01-01-2018</span>
+					</li>
+					<li class="entry-list">
+						<p class="entry-title"><a href="entry.html">Lorem ipsum dolor sit amet</a></p>
+						<span class="entry-date">01-01-2018</span>
+					</li>
+				</ol>
+				<a href="new_entry.html" id="add-entrybtn" class="form-button">Create Entry</a>
+			</div>
+				
+		</div>
 	</div>
 </body>
 </html>

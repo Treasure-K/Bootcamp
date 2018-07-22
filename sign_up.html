@@ -4,31 +4,49 @@
 	<title>Sign Up</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body background="images/DiaryBG.jpg">
-	<div align="right">
-		<a href="log_in.html" class="my_text">Sign in</a><br>
+<body class="anonymous-bg">
+	<div class="nav">
+		<div class="nav-left">
+			<a href="index.html" class="my_text">My Diary</a>
+		</div>
+		<div class="nav-right">
+			<a href="sign_up.html" class="my_text">Sign In</a>
+		</div>	
 	</div>
-	<p align="center">Welcome to MyDiary!</p>
-	<p align="center">Let's create your account.</p>
-	<div align="center">
-		<form action="" class="my_text">
-			<input type="text" name="firstname"><br>
-			FIRST NAME
-			<br><br>
-			<input type="text" name="firstname"><br>
-			LAST NAME
-			<br><br>
-			<input type="text" name="email"><br>
-			EMAIL ADDRESS
-			<br><br>
-			<input type="password" name="password"><br>
-			PASSWORD
-			<br><br>
-			<input type="password" name="confirm_password"><br>
-			CONFIRM PASSWORD
-			<br><br>
-	  		<button>Create account</button>
-		</form>
+
+	<div class="content center">
+		<div class="content-header">
+		</div>
+		<div class="content-body">
+			<div class="form-wrap">
+				<h2>Sign Up</h2>
+				<form action="" >
+					<div class="input-div">
+						<label>First name:</label>	
+						<input class="form-input" type="text" name="fname">
+					</div>
+					<div class="input-div">
+						<label>Last name:</label>	
+						<input class="form-input" type="text" name="lname">
+					</div>
+					<div class="input-div">
+						<label>Email address:</label>	
+						<input class="form-input" type="email" name="email">
+					</div>
+					<div class="input-div">
+						<label>Password:</label>
+						<input class="form-input" type="password" name="password">
+					</div>
+					<div class="input-div">
+						<label>Confirm password:</label>	
+						<input class="form-input" type="password" name="confirm-password">
+					</div>
+					<div class="input-div">
+						<button class="form-button blue-btn">Sign Up</button>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

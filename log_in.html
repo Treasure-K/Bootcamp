@@ -4,24 +4,39 @@
 	<title>Log In</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body background="images/DiaryBG.jpg">
-	<div align="right">
-		<a href="sign_up.html" class="my_text">Sign up</a><br>
+<body class="anonymous-bg">
+	<div class="nav">
+		<div class="nav-left">
+			<a href="index.html" class="my_text">My Diary</a>
+		</div>
+		<div class="nav-right">
+			<a href="sign_up.html" class="my_text">Sign up</a>
+		</div>	
 	</div>
-	<h2 align="center" class="my_text">Sign In</h2>
-	<div align="center">
-		<form action="" class="my_text">
-		  	
-			<input type="text" name="email"><br>
-			EMAIL ADDRESS
-			<br><br>
-			<input type="password" name="password"><br>
-			PASSWORD
-			<br><br>
-			<a href="" class="my_text">Forgot your password?</a>
-	  		<a href="" class="my_text">Sign in</a><br>
-		</form>
+
+	<div class="content center">
+		<div class="content-header">
+			
+		</div>
+		<div class="content-body">
+			<div class="form-wrap">
+				<h2>Sign In</h2>
+				<form action="" >
+					<div class="input-div">
+						<label>Email address:</label>	
+						<input class="form-input" type="text" name="email">
+					</div>
+					<div class="input-div">
+						<label>Password:</label>
+						<input class="form-input" type="password" name="password">
+					</div>
+					<div class="input-div">
+						<button class="form-button blue-btn">Sign In</button>
+					</div>
+					<a href="/">Forgot your password?</a>
+				</form>
+			</div>
+		</div>
 	</div>
-	
 </body>
 </html>
