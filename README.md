@@ -1,2 +1,2 @@
-# Bootcamp
+# MyDiary
 Andela bootcamp 10

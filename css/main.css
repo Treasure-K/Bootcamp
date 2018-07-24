@@ -1,14 +1,16 @@
+/*index.html*/
 h1 {
 	color: black;
 	font-family: "Tlwg Typo", serif;
 	font-size: 300%;
 }
-
+/**/
 body, button{
 	font-weight: bold;
-	font-family:"Tlwg Typo";
+	font-family:"Tlwg Typo", serif;
 	color: black;
 }
+
 
 .user-bg {
 	background: url('../images/homebg.jpg') no-repeat;
@@ -39,9 +41,11 @@ a {
 .content {
 	padding-top: 60px;
 }
+
 .center {
 	text-align: center;
 }
+
 .form-wrap {
 	max-width: 400px;
 	margin: auto;
@@ -50,6 +54,7 @@ a {
     background-color: #35353514;
     border-radius: .3rem;
 }
+
 .input-div{
 	margin: 20px 0;
 	text-align: left;
@@ -78,11 +83,17 @@ a {
 	margin: 10px 0px; 
 }
 
+.entry-listheight {
+	max-height: 400px;
+    overflow: auto;
+}
+
 #add-entrybtn {
 	background: #d4d4d4;
 }
-.active {
-	color: #fff!important
+
+textarea {
+	height: 250px
 }
 
 /*buttons*/
