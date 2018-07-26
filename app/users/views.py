@@ -30,6 +30,14 @@ def sign_up():
 		if not result["success"]:
 			return jsonify(result), 400
 
+		# check if email exists
+		for user in users:
+			if user["email"] == data["email"]:
+				return jsonify({
+					"success": False,
+					"message": "Email already in use"
+				}), 409
+
 		# form user object
 		user = {
 			"id": uuid.uuid4().hex,
