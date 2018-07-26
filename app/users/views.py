@@ -50,7 +50,7 @@ def sign_up():
 		users.append(user)
 		return jsonify({
 			"success": True,
-			"mesasge": "User created successfully"
+			"message": "User created successfully"
 		}), 201
 	return jsonify({
 		"success": True,
@@ -96,7 +96,7 @@ def validate_name(data, field):
 		if not bool(re.match('^([A-Za-z]{3,25}$)', data[field])):
 			return {
 				"success": False,
-				"mesasge": "Enter a valid " + field
+				"message": "Enter a valid " + field
 			}
 	return {
 		"success": True
@@ -108,7 +108,7 @@ def validate_data(data, required_fields):
 		if field not in data:
 			return {
 				"success": False,
-				"mesasge": field + " is required"
+				"message": field + " is required"
 			}
 	# validate input
 	if "first_name" in data:

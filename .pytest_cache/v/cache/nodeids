@@ -1,0 +1,3 @@
+[
+  "app/tests/test_auth_routes.py::TestAuthEndpoints::test_user_register_successful"
+]

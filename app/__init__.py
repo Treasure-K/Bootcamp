@@ -176,7 +176,7 @@ def validate_entry_data(data, required_fields):
 		if field not in data:
 			return {
 				"valid": False,
-				"mesasge": field + " is required"
+				"message": field + " is required"
 			}
 	
 	if is_validate_date(data["entry_date"]):
@@ -191,7 +191,7 @@ def validate_entry_data(data, required_fields):
 
 	return jsonify({
 			"success": True,
-			"mesasge": "Entry added successfully"
+			"message": "Entry added successfully"
 		}), 201
 
 def decode_auth_token(auth_token):
