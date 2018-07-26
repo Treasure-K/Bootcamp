@@ -1,7 +1,7 @@
 from flask import jsonify, request, Blueprint
 import re
 import jwt
-from passlib.hash import sha256_crypt
+from passlib.hash import sha256_crypt #For encrypting passwords
 import uuid
 from datetime import datetime, timedelta
 from app import app
@@ -13,7 +13,7 @@ USERS_BLUEPRINT = Blueprint(
 
 users = []
 
-@USERS_BLUEPRINT.route("/users", methods=['GET', 'POST'])
+@USERS_BLUEPRINT.route("/auth/signup", methods=['GET', 'POST'])
 def sign_up():
 	if request.method == "POST":
 		# get request data
@@ -49,7 +49,7 @@ def sign_up():
 		"users": users
 	}), 200
 
-@USERS_BLUEPRINT.route("/login", methods=['POST'])
+@USERS_BLUEPRINT.route("/auth/login", methods=['POST'])
 def login():
 	# get request data
 	data = request.get_json()
@@ -61,7 +61,7 @@ def login():
 	result = validate_data(data, required_fields)
 	if not result["success"]:
 		return jsonify(result), 400
-	# check for user user
+	# check for user
 	for user in users:
 		if user["email"] == data["email"]:
 			if sha256_crypt.verify(data["password"], user["password"]):
@@ -95,7 +95,7 @@ def validate_name(data, field):
 	}
 
 def validate_data(data, required_fields):
-	# check for required fiels
+	# check for required fields
 	for field in required_fields:
 		if field not in data:
 			return {
@@ -132,5 +132,3 @@ def validate_data(data, required_fields):
 	return {
 		"success": True
 	}
-
-# @app.route("", methods['POST'])
