@@ -1,1 +1,5 @@
-{}
+{
+  "app/tests/test_auth_routes.py::TestAuthEndpoints::test_login_fail": true,
+  "app/tests/test_auth_routes.py::TestAuthEndpoints::test_login_successful": true,
+  "app/tests/test_entries_routes.py::TestEntriesEndpoints::test_update_entry": true
+}

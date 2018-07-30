@@ -1,2 +1,4 @@
 [run]
 omit = app/tests/*
+	app/entries/__init__.py
+	app/users/__init__.py
