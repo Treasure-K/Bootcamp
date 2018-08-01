@@ -7,9 +7,10 @@ from functools import wraps
 
 app = Flask(__name__)
 
-from app.users.views import USERS_BLUEPRINT , validate_data
 
+from app.users.views import USERS_BLUEPRINT 
 from app.entries.views import ENTRIES_BLUEPRINT 
+
 
 app.register_blueprint(ENTRIES_BLUEPRINT)
 app.register_blueprint(USERS_BLUEPRINT)

@@ -14,6 +14,7 @@ USERS_BLUEPRINT = Blueprint(
 
 users = []
 
+
 @USERS_BLUEPRINT.route("/auth/signup", methods=['GET', 'POST'])
 def sign_up():
 	if request.method == "POST":
@@ -57,6 +58,7 @@ def sign_up():
 		"success": True,
 		"users": users
 	}), 200
+
 
 @USERS_BLUEPRINT.route("/auth/login", methods=['POST'])
 def login():
@@ -102,6 +104,7 @@ def validate_name(data, field):
 	return {
 		"success": True
 	}
+
 
 def validate_data(data, required_fields):
 	# check for required fields

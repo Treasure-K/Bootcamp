@@ -4,20 +4,26 @@ from app import app
 import json
 from app.users.views import users
 
+
 class BaseTestCase(TestCase):
 
+
 	token = ""
+
 
 	def create_app(self):
 		app = Flask(__name__)
 		return app
 
+
 	def setUp(self):
 		self.client = app.test_client(self)
+
 
 	def tearDown(self):
 		users[:] = []
 		token = ""
+
 	
 	def signup(self, user_data = json.dumps(dict(
 			first_name = "Treasure",
@@ -31,6 +37,7 @@ class BaseTestCase(TestCase):
 									content_type='application/json')
 		return json.loads(response.data.decode('utf-8'))
 
+
 	def login(self):
 		self.signup()
 		login_data = json.dumps(dict(
@@ -41,6 +48,7 @@ class BaseTestCase(TestCase):
 		self.token = json.loads(response.data.decode('utf-8'))["token"]
 		return self.token
 
+
 	@staticmethod
 	def create_entry():
 		return json.dumps(dict(
@@ -48,6 +56,7 @@ class BaseTestCase(TestCase):
 			entry_date="2004-04-04",
 			entry_content= "This is a test"
 		))
+
 
 	def add_entry(self):
 		token = self.login()
@@ -58,12 +67,14 @@ class BaseTestCase(TestCase):
 			"json_data": json.loads(response.data.decode('utf-8'))
 		} 
 
+
 	def get_entries(self):
 		token = self.add_entry()["token"]
 		response = self.client.get('/entries',
 									headers={'token':token},
 									content_type='application/json')
 		return json.loads(response.data.decode('utf-8'))["entries"]
+
 
 	def get_entry(self):
 		entries = self.get_entries()

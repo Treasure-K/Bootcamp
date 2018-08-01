@@ -15,6 +15,7 @@ ENTRIES_BLUEPRINT = Blueprint(
 
 entries = []
 
+
 def authenticate(func):
 	@wraps(func)
 	def wrapper(*args, **kwargs):	
@@ -42,10 +43,10 @@ def authenticate(func):
 		return func(user_id, *args, **kwargs)
 	return wrapper
 
+
 @app.route("/")
 def hello():
     return jsonify("Welcome to my diary!")
-
 
 
 @ENTRIES_BLUEPRINT.route("/entries", methods=['GET'])
@@ -80,7 +81,6 @@ def add_entry(user_id):
 	if not result["valid"]:
 			return jsonify(result), 400
 
-
 	entry = {
 		"user_id" : user_id,
 		"entry_id": uuid.uuid4().hex,
@@ -96,8 +96,6 @@ def add_entry(user_id):
 			"message": "Entry added successfully"
 		}), 201
 	
-
-
 
 @ENTRIES_BLUEPRINT.route("/entries/<entryId>", methods=['GET'])
 @authenticate
@@ -161,7 +159,8 @@ def update_entry(user_id, entryId):
 		"message" : "Entry with id " + entryId + " not found"
 	}), 404 
 
-def is_validate_date(date):
+
+def is_valid_date(date):
 	# Validate date format
 	date_format = '%Y-%m-%d'			
 	try:
@@ -169,6 +168,7 @@ def is_validate_date(date):
 		return True
 	except ValueError:
 		return False
+
 
 def validate_entry_data(data, required_fields):
 	# check for required fields
@@ -179,7 +179,7 @@ def validate_entry_data(data, required_fields):
 				"message": field + " is required"
 			}
 	
-	if is_validate_date(data["entry_date"]):
+	if is_valid_date(data["entry_date"]):
 		return {
 			"valid": True
 		}
@@ -193,6 +193,7 @@ def validate_entry_data(data, required_fields):
 			"success": True,
 			"message": "Entry added successfully"
 		}), 201
+
 
 def decode_auth_token(auth_token):
     

@@ -1,7 +1,9 @@
 from app.tests.base_test_case import BaseTestCase
 import json
 
+
 class TestAuthEndpoints(BaseTestCase):
+
 	
 	def signup(self, user_data = json.dumps(dict(
 			first_name = "Treasure",
@@ -15,6 +17,7 @@ class TestAuthEndpoints(BaseTestCase):
 									content_type='application/json')
 		return json.loads(response.data.decode('utf-8'))
 
+
 	def login(self):
 		self.signup()
 		login_data = json.dumps(dict(
@@ -24,16 +27,19 @@ class TestAuthEndpoints(BaseTestCase):
 		response = self.client.post('/auth/login', data=login_data, content_type='application/json') 
 		return json.loads(response.data.decode('utf-8'))["token"]
 
+
 	def test_user_register_successful(self):
 		""" """
 		json_data = self.signup()
 		self.assertEqual(json_data["message"], "User created successfully")
+
 
 	def test_email_already_exists(self):
 		""" """
 		self.signup()
 		json_data = self.signup()
 		self.assertEqual(json_data["message"], "Email already in use")
+
 
 	def test_register_fail_no_firstname(self):
 		""" """
@@ -45,6 +51,7 @@ class TestAuthEndpoints(BaseTestCase):
 		))
 		json_data = self.signup(user_data)
 		self.assertEqual(json_data["message"], "first_name is required")
+
 
 	def test_register_fail_invalid_firstname(self):
 		""" """
@@ -168,6 +175,7 @@ class TestAuthEndpoints(BaseTestCase):
 		json_data = json.loads(response.data.decode('utf-8'))
 		self.assertEqual(json_data["message"], "password is required")
 
+
 	def test_email_password_mismatch(self):
 		""" """
 		self.signup()
@@ -178,6 +186,7 @@ class TestAuthEndpoints(BaseTestCase):
 		response = self.client.post('/auth/login', data=login_data, content_type='application/json') 
 		json_data = json.loads(response.data.decode('utf-8'))
 		self.assertEqual(json_data["message"], "Email and password mismatch")
+
 
 	def test_user_not_found(self):
 		""" """
