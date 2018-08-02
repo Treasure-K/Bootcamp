@@ -6,11 +6,23 @@ import uuid
 from datetime import datetime, timedelta
 from app import app
 from functools import wraps
+import psycopg2
+import psycopg2.extras
 
 
 ENTRIES_BLUEPRINT = Blueprint(
 	'entries', __name__
 )
+
+
+def connect_to_db():
+	connection_string = "database=mydiarydb user=postgres password=trekab host=127.0.0.1 port=5432"
+	print(connection_string)
+
+	try:
+		return pycopg2.connect(connection_string)
+	except:
+		print("Can't connect to database")
 
 
 entries = []
@@ -53,6 +65,15 @@ def hello():
 @authenticate
 def fetch_entries(user_id):
 	user_entries = []
+
+	# conn = connect_to_db()
+	# cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor
+
+	# try:
+	# 	cur.execute("")
+	# except:
+	# 	raise e
+	# conn.commit()
 
 	for entry in entries:
 		if entry["user_id"] == user_id:
