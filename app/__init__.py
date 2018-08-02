@@ -59,20 +59,25 @@ def sign_up():
 	if request.method == "POST":
 		# get request data
 		data = request.get_json()
-		# validate user data
-		# required_fields = [
-		# 	"first_name",
-		# 	"last_name",
-		# 	"email",
-		# 	"password",
-		# 	"confirm_password"
-		# ]
-		# result = validate_data(data, required_fields)
-		# if not result["success"]:
-		# 	return jsonify(result), 400
+		#validate user data
+		required_fields = [
+			"first_name",
+			"last_name",
+			"email",
+			"password",
+			"confirm_password"
+		]
+		result = validate_data(data, required_fields)
+		if not result["success"]:
+			return jsonify(result), 400
 
 		# check if email exists
 		
+		if email_exists(data["email"]):
+			return jsonify({
+				"success": False,
+				"message": "Email already in use"
+			}), 409
 
 		# for row in cur.execute("""SELECT * FROM users"""):
 		# 	print(row)
@@ -149,3 +154,8 @@ def validate_data(data, required_fields):
 	return {
 		"success": True
 	}
+
+
+def email_exists(email):
+    cur.execute("SELECT email FROM users WHERE email = %s", (email,))
+    return cur.fetchone() is not None
